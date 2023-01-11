@@ -13,9 +13,7 @@ namespace IscaBar
         public App()
         {
             InitializeComponent();
-            CategorySDAO.GetAllAsync();
-            DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new OrderView());
         }
 
         protected override void OnStart()

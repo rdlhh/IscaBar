@@ -7,13 +7,13 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IscaBar.DAO.Servidor
+namespace iscaBar.DAO.Servidor
 {
-    internal class CategorySDAO
+    public class IngredientSDAO
     {
-        public static async Task<List<Categoria>> GetAllAsync()
+        public static async Task<List<Ingredient>> GetAllAsync()
         {
-            string URL = Constant.UrlApi + "bar_app/getAllCategory";
+            string URL = Constant.UrlApi + "bar_app/getAllIngredient";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
             Task<HttpResponseMessage> response = client.GetAsync(URI);
@@ -21,7 +21,7 @@ namespace IscaBar.DAO.Servidor
             {
                 response.Result.EnsureSuccessStatusCode();
                 string content = await response.Result.Content.ReadAsStringAsync();
-                List<Categoria> list = JsonConvert.DeserializeObject<List<Categoria>>(content);
+                List<Ingredient> list = JsonConvert.DeserializeObject<List<Ingredient>>(content);
                 return list;
             }
             catch (Exception ex)
@@ -30,12 +30,12 @@ namespace IscaBar.DAO.Servidor
             }
         }
 
-        public static async Task<String> UpdateAsync(Categoria cat)
+        public static async Task<String> UpdateAsync(Ingredient ingre)
         {
-            string URL = Constant.UrlApi + "bar_app/updateCategory";
+            string URL = Constant.UrlApi + "bar_app/updateIngredient";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
-            var js = JsonConvert.SerializeObject(cat);
+            var js = JsonConvert.SerializeObject(ingre);
             var httpContent = new StringContent(js, Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> response = client.PutAsync(URI, httpContent);
             try
@@ -51,12 +51,12 @@ namespace IscaBar.DAO.Servidor
             }
         }
 
-        public static async Task<String> AddAsync(Categoria cat)
+        public static async Task<String> AddAsync(Ingredient ingre)
         {
-            string URL = Constant.UrlApi + "bar_app/addCategory";
+            string URL = Constant.UrlApi + "bar_app/addIngredient";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
-            var js = JsonConvert.SerializeObject(cat);
+            var js = JsonConvert.SerializeObject(ingre);
             var httpContent = new StringContent(js, Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> response = client.PutAsync(URI, httpContent);
             try
@@ -72,12 +72,12 @@ namespace IscaBar.DAO.Servidor
             }
         }
 
-        public static async Task<String> DeleteAsync(Categoria cat)
+        public static async Task<String> DeleteAsync(Ingredient ingre)
         {
-            string URL = Constant.UrlApi + "bar_app/deleteCategory";
+            string URL = Constant.UrlApi + "bar_app/deleteIngredient";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
-            var js = JsonConvert.SerializeObject(cat.Id);
+            var js = JsonConvert.SerializeObject(ingre.Id);
             var httpContent = new StringContent(js, Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> response = client.PutAsync(URI, httpContent);
             try
@@ -90,7 +90,6 @@ namespace IscaBar.DAO.Servidor
             catch (Exception ex)
             {
                 throw ex;
-
             }
         }
     }
