@@ -1,6 +1,7 @@
 ﻿using IscaBar.Model;
 using SQLite;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,18 +15,16 @@ namespace IscaBar.Models
         private int diners;
         private string client;
         private string waiter;
-        private string state;
         private decimal total;
-        private List<Order> orders;
+        private ArrayList orders;
 
         [PrimaryKey, AutoIncrement]
         public int Id { get { return id; } set { id = value; OnPropertyChanged(); } }
-        public int Num { get { return num; } set { num = value; OnPropertyChanged(); } }
-        public int Diners { get { return diners; } set { diners = value; OnPropertyChanged(); } }
-        public string Client { get { return client; } set { client = value; OnPropertyChanged(); } }
+        public int Table { get { return num; } set { num = value; OnPropertyChanged(); } }
+        public int Pax { get { return diners; } set { diners = value; OnPropertyChanged(); } }
+        public string Clients { get { return client; } set { client = value; OnPropertyChanged(); } }
         public string Waiter { get { return waiter; } set { waiter = value; OnPropertyChanged(); } }
-        public string State { get { return state; } set { state = value; OnPropertyChanged(); } }
-        public decimal Total { get { return total; } set { total = value; OnPropertyChanged(); } }
-        public List<Order> Orders { get { return orders; } set { orders = value; OnPropertyChanged(); } }
+        public decimal tPrice { get { return total; } set { total = value; OnPropertyChanged(); } }
+        public ArrayList OrderLine { get { return orders; } set { orders = value; OnPropertyChanged(); } }
     }
 }

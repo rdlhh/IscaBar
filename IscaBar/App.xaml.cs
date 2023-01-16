@@ -1,4 +1,5 @@
-﻿using IscaBar.DAO.Servidor;
+﻿using iscaBar.Views;
+using IscaBar.DAO.Servidor;
 using IscaBar.Services;
 using IscaBar.Views;
 using System;
@@ -13,7 +14,7 @@ namespace IscaBar
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new OrderView());
+            MainPage = new NavigationPage(new OrdersListView());
         }
 
         protected override void OnStart()
