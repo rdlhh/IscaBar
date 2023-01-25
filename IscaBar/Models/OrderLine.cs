@@ -8,7 +8,7 @@ using System.Text;
 
 namespace IscaBar.Models
 {
-    [Table("order")]
+    [Table("orderLine")]
     public class OrderLine:ModelBase
     {
         private int id;

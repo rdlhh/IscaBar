@@ -16,7 +16,7 @@ namespace iscaBar.Views
     public partial class OrdersListView : ContentPage
     {
         /// <summary>
-        /// Declarar el modelo VM de lisra de Ordenes
+        /// Declarar el modelo VM de lista de Ordenes
         /// </summary>
         OrdersListVM vm = new OrdersListVM();
        /// <summary>

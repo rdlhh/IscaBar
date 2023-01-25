@@ -13,7 +13,7 @@ namespace IscaBar.DAO.Servidor
     {
         public static async Task<List<Categoria>> GetAllAsync()
         {
-            string URL = Constant.UrlApi + "bar_app/getAllCategory";
+            string URL = Constant.UrlApi + "restaurapp_app/getAllCategory";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
             Task<HttpResponseMessage> response = client.GetAsync(URI);
@@ -32,7 +32,7 @@ namespace IscaBar.DAO.Servidor
 
         public static async Task<String> UpdateAsync(Categoria cat)
         {
-            string URL = Constant.UrlApi + "bar_app/updateCategory";
+            string URL = Constant.UrlApi + "restaurapp_app/updateCategory";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
             var js = JsonConvert.SerializeObject(cat);
@@ -53,7 +53,7 @@ namespace IscaBar.DAO.Servidor
 
         public static async Task<String> AddAsync(Categoria cat)
         {
-            string URL = Constant.UrlApi + "bar_app/addCategory";
+            string URL = Constant.UrlApi + "restaurapp_app/addCategory";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
             var js = JsonConvert.SerializeObject(cat);
@@ -74,7 +74,7 @@ namespace IscaBar.DAO.Servidor
 
         public static async Task<String> DeleteAsync(Categoria cat)
         {
-            string URL = Constant.UrlApi + "bar_app/deleteCategory";
+            string URL = Constant.UrlApi + "restaurapp_app/deleteCategory";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
             var js = JsonConvert.SerializeObject(cat.Id);

@@ -13,7 +13,7 @@ namespace iscaBar.DAO.Servidor
     {
         public static async Task<List<Product>> GetAllAsync()
         {
-            string URL = Constant.UrlApi + "bar_app/getAllProduct";
+            string URL = Constant.UrlApi + "restaurapp_app/getAllProduct";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
             Task<HttpResponseMessage> response = client.GetAsync(URI);
@@ -32,7 +32,7 @@ namespace iscaBar.DAO.Servidor
 
         public static async Task<String> UpdateAsync(Product prod)
         {
-            string URL = Constant.UrlApi + "bar_app/updateProduct";
+            string URL = Constant.UrlApi + "restaurapp_app/updateProduct";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
             var js = JsonConvert.SerializeObject(prod);
@@ -53,7 +53,7 @@ namespace iscaBar.DAO.Servidor
 
         public static async Task<String> AddAsync(Product prod)
         {
-            string URL = Constant.UrlApi + "bar_app/addProduct";
+            string URL = Constant.UrlApi + "restaurapp_app/addProduct";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
             var js = JsonConvert.SerializeObject(prod);
@@ -74,7 +74,7 @@ namespace iscaBar.DAO.Servidor
 
         public static async Task<String> DeleteAsync(Product prod)
         {
-            string URL = Constant.UrlApi + "bar_app/deleteProduct";
+            string URL = Constant.UrlApi + "restaurapp_app/deleteProduct";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
             var js = JsonConvert.SerializeObject(prod.Id);
