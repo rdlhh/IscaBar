@@ -1,4 +1,6 @@
-﻿using IscaBar.Helpers;
+﻿using iscaBar.DAO.Servidor;
+using iscaBar.Helpers;
+using IscaBar.Helpers;
 using IscaBar.Models;
 using Newtonsoft.Json;
 using System;
@@ -11,28 +13,46 @@ namespace IscaBar.DAO.Servidor
 {
     internal class CategorySDAO
     {
-        public static async Task<List<Categoria>> GetAllAsync()
+        private static CategorySDAO _instance = null;
+        public static CategorySDAO Instance
         {
-            string URL = Constant.UrlApi + "restaurapp_app/getAllCategory";
-            Uri URI = new Uri(URL);
-            HttpClient client = new HttpClient();
-            Task<HttpResponseMessage> response = client.GetAsync(URI);
-            try
+            get
             {
-                response.Result.EnsureSuccessStatusCode();
-                string content = await response.Result.Content.ReadAsStringAsync();
-                List<Categoria> list = JsonConvert.DeserializeObject<List<Categoria>>(content);
-                return list;
+                if (_instance != null) { return _instance; }
+                else
+                {
+                    _instance = new CategorySDAO(); return _instance;
+                }
             }
-            catch (Exception ex)
+
+        }
+        public async Task<List<Categoria>> GetAllAsync()
+        {
+            var client = new HttpClient();
             {
-                throw ex;
+                client.BaseAddress = new Uri(BaseUrl.UrlApi);
+
+                HttpResponseMessage response = await client.GetAsync("/restaurapp_app/getCategory");
+                String content = await response.Content.ReadAsStringAsync();
+
+                try
+                {
+                    response.EnsureSuccessStatusCode();
+                    var data = JsonConvert.DeserializeObject<Dictionary<string, object>>(content);
+                    List<Categoria> cat = JsonConvert.DeserializeObject<List<Categoria>>(data["data"].ToString());
+                    return cat;
+
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 
         public static async Task<String> UpdateAsync(Categoria cat)
         {
-            string URL = Constant.UrlApi + "restaurapp_app/updateCategory";
+            string URL = Constant.UrlApi + "restaurapp_app/updateCat";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
             var js = JsonConvert.SerializeObject(cat);
@@ -53,7 +73,7 @@ namespace IscaBar.DAO.Servidor
 
         public static async Task<String> AddAsync(Categoria cat)
         {
-            string URL = Constant.UrlApi + "restaurapp_app/addCategory";
+            string URL = Constant.UrlApi + "restaurapp_app/addCat";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
             var js = JsonConvert.SerializeObject(cat);
@@ -74,7 +94,7 @@ namespace IscaBar.DAO.Servidor
 
         public static async Task<String> DeleteAsync(Categoria cat)
         {
-            string URL = Constant.UrlApi + "restaurapp_app/deleteCategory";
+            string URL = Constant.UrlApi + "restaurapp_app/delCat";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
             var js = JsonConvert.SerializeObject(cat.Id);

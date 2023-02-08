@@ -13,7 +13,7 @@ namespace iscaBar.DAO.Servidor
     {
         public static async Task<List<Product>> GetAllAsync()
         {
-            string URL = Constant.UrlApi + "restaurapp_app/getAllProduct";
+            string URL = Constant.UrlApi + "restaurapp_app/product";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
             Task<HttpResponseMessage> response = client.GetAsync(URI);
@@ -74,7 +74,7 @@ namespace iscaBar.DAO.Servidor
 
         public static async Task<String> DeleteAsync(Product prod)
         {
-            string URL = Constant.UrlApi + "restaurapp_app/deleteProduct";
+            string URL = Constant.UrlApi + "restaurapp_app/delProduct";
             Uri URI = new Uri(URL);
             HttpClient client = new HttpClient();
             var js = JsonConvert.SerializeObject(prod.Id);

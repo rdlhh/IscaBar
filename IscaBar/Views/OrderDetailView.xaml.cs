@@ -1,6 +1,7 @@
 ﻿using iscaBar.Models;
 using iscaBar.ViewModels;
 using IscaBar.Models;
+using IscaBar.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace iscaBar.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OrderDetailView : ContentPage
     {
+        CategoryView cv;
         //Declaracion del VM
         OrderDetailVM vm;
         /// <summary>
@@ -140,6 +142,11 @@ namespace iscaBar.Views
             {
                 await DisplayAlert("Error al guardar orden", ex.Message, "OK");
             }
+        }
+
+        private async void ClickedCategoryOptions(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CategoryView());
         }
     }
 }

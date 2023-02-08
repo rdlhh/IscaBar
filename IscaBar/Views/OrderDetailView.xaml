@@ -34,15 +34,17 @@
             <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Order.Waiter}"></Entry>
 
             <Label Grid.Row="5" Grid.Column="0" Text="Cuenta:"></Label>
-            <Entry Grid.Row="5" Grid.Column="1" Text="{Binding Order.tPrice}"></Entry>
+            <Label Grid.Row="5" Grid.Column="1" Text="{Binding Order.tPrice}"></Label>
+
+            
 
         </Grid>
         <StackLayout Orientation="Horizontal">
-
-            <Button Text="Nuevo" Clicked="ClickedNewOrder" HorizontalOptions="FillAndExpand"></Button>
+            <Button Text="Carta" Clicked="ClickedCategoryOptions" HorizontalOptions="CenterAndExpand"></Button>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
             <Button Text="Borrar" Clicked="ClickedDeleteOrder" HorizontalOptions="FillAndExpand"></Button>
             <Button Text="Guardar" Clicked="ClickedSaveOrder" HorizontalOptions="FillAndExpand"></Button>
-
         </StackLayout>
     </StackLayout>
 

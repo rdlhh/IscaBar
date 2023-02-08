@@ -33,6 +33,7 @@ namespace iscaBar.DAO.Servidor
             {
                 client.BaseAddress = new Uri(BaseUrl.UrlApi);
 
+
                 HttpResponseMessage response = await client.GetAsync("/restaurapp_app/getOrder");
                 string content = await response.Content.ReadAsStringAsync();
 
