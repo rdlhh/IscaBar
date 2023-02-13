@@ -14,36 +14,20 @@ namespace IscaBar.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CategoryView : ContentPage
     {
-        CategoryViewVM vm = new CategoryViewVM();
+        CategoryViewVM vm;
         public CategoryView()
         {
+            vm = new CategoryViewVM();
             InitializeComponent();
-            BindingContext = vm;
+            CategoryList.ItemsSource = vm.BindingCat;
         }
         public CategoryView(Categoria cat)
         {
             vm = new CategoryViewVM(cat);
             InitializeComponent();
-            CategoryList.ItemsSource = vm.Items;
+            CategoryList.ItemsSource = vm.BindingCat;
             
            
-        }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            await vm.LoadCategoryAsync();
-        }
-
-        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            Categoria cat = (Categoria)e.Item;
-            if (cat == null)
-                return;
-
-            await Navigation.PushAsync();
-
-            ((ListView)sender).SelectedItem = null;
         }
 
         async void ProductList(object sender, EventArgs e)
@@ -58,7 +42,7 @@ namespace IscaBar.Views
             }
             else
             {
-                await Navigation.PushAsync(new ProductView(categoria));
+                await Navigation.PushAsync(new Product_View(categoria));
             }
             
             //Deselected item

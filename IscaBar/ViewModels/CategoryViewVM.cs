@@ -13,12 +13,14 @@ namespace IscaBar.ViewModels
     class CategoryViewVM : ModelBase
     {
         private ObservableCollection<Categoria> bindingCat;
-        private Categoria cat;
 
         public ObservableCollection<Categoria> BindingCat {
             get { return bindingCat; } 
             set { bindingCat = value; OnPropertyChanged(); } 
         }
+
+        private Categoria cat;
+        public Categoria Cat { get { return cat; } set { cat = value; OnPropertyChanged(); } }
 
         /// <summary>
         /// Metodo para actualizar la lista en caso de cambio
@@ -47,7 +49,7 @@ namespace IscaBar.ViewModels
 
         public CategoryViewVM(Categoria cat)
         {
-            this.cat = cat;
+            Cat = cat;
         }
 
         /// <summary>

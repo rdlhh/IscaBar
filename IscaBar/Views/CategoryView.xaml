@@ -2,38 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IscaBar.Views.CategoryView">
-    <StackLayout>
-        <StackLayout Orientation="Vertical">
-            <ListView x:Name="CategoryList"
-            ItemsSource="{Binding BindingCat}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
-
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Column="0" HorizontalOptions="CenterAndExpand">
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text=" "/>
-                                                <Span Text="{Binding Name}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button Text="Menú del día" Clicked="ClickedMenuDia" HorizontalOptions="StartAndExpand"></Button>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Vertical">
+                <ListView x:Name="CategoryList"
+                ItemsSource="{Binding BindingCat}"
+                CachingStrategy="RecycleElement"
+                ItemSelected= "ProductList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0" HorizontalOptions="FillAndExpand">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text=" "/>
+                                                    <Span Text="{Binding Name}" TextTransform="Uppercase"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Menú del día" Clicked="ClickedMenuDia" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
         </StackLayout>
-    </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

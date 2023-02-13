@@ -32,7 +32,7 @@ namespace IscaBar.DAO.Servidor
             {
                 client.BaseAddress = new Uri(BaseUrl.UrlApi);
 
-                HttpResponseMessage response = await client.GetAsync("/restaurapp_app/getCategory");
+                HttpResponseMessage response = await client.GetAsync("/restaurapp_app/category");
                 String content = await response.Content.ReadAsStringAsync();
 
                 try
